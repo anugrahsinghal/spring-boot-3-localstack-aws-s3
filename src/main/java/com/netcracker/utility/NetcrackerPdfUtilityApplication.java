@@ -20,22 +20,3 @@ public class NetcrackerPdfUtilityApplication {
 
 }
 
-@RestController
-@RequiredArgsConstructor
-class FileUploadController {
-
-    private final StorageService storageService;
-
-
-    @PostMapping("/upload")
-    public ResponseEntity<?> uploadFile(@RequestParam("file") MultipartFile file) {
-        if (!MediaType.APPLICATION_PDF.toString().equals(file.getContentType())) {
-            return ResponseEntity.badRequest().body("Only PDF file types are allwed");
-        }
-
-        Object upload = storageService.upload(file);
-
-        return ResponseEntity.accepted().body(upload);
-    }
-
-}

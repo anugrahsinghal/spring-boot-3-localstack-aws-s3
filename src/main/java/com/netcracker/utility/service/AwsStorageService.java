@@ -58,6 +58,7 @@ public class AwsStorageService implements StorageService {
         String filename = someId + "." + "pdf";
         Long contentLength = s3Object.getObjectMetadata().getContentLength();
 
+
 //        return DownloadedResource.builder().id(id).fileName(filename).contentLength(contentLength).inputStream(s3Object.getObjectContent())
 //                .build();
         return null;
