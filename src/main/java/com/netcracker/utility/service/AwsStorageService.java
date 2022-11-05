@@ -43,14 +43,14 @@ public class AwsStorageService implements StorageService {
                 file.getOriginalFilename(),
                 "%s--%s".formatted(file.getName(), hashGenerator.getNonRepeatableHash().value())
         );
-        //noinspection UnnecessaryLocalVariable
+
         boolean doesObjectExist = amazonS3.doesObjectExist(awsConfig.getBucketName(), fileInfo.getStorageKey());
         if (doesObjectExist) {
             log.error("Could not save {}  with key {}", fileInfo.getOriginalName(), fileInfo.getStorageKey());
             throw new RuntimeException(
                     "Object cannot be saved as it already exists."
-                            + "This condition should not be reached as hash should be a unique identifier."
-                            + "Please try renaming your file for the time while we resolve this."
+                    + "This condition should not be reached as hash should be a unique identifier."
+                    + "Please try renaming your file for the time while we resolve this."
             );
         }
         PutObjectResult putObjectResult = amazonS3.putObject(awsConfig.getBucketName(),
@@ -60,7 +60,7 @@ public class AwsStorageService implements StorageService {
         );
 
         try {
-            fileMappingRepository.saveAndFlush(new FileMapping(null, fileInfo));
+            fileMappingRepository.saveAndFlush(new FileMapping(fileInfo));
         } catch (Exception e) {
             throw new RuntimeException("Object Could not be saved", e);
         } finally {
@@ -89,8 +89,8 @@ public class AwsStorageService implements StorageService {
         Long contentLength = s3Object.getObjectMetadata().getContentLength();
 
 
-//        return DownloadedResource.builder().id(id).fileName(filename).contentLength(contentLength).inputStream(s3Object.getObjectContent())
-//                .build();
+        //        return DownloadedResource.builder().id(id).fileName(filename).contentLength(contentLength).inputStream(s3Object.getObjectContent())
+        //                .build();
         return null;
     }
 }
