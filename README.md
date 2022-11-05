@@ -7,11 +7,11 @@ Create RESTful APIs, use Spring Boot (MVC Architecture) for bean initialization 
 
 ## Frontend
 
-- Make a simple form that takes in the file name and gives the option to upload a PDF file.
-- Test for the following validations:
+- **(ok)** Make a simple form that takes in the file name and gives the option to upload a PDF file.
+- **(ok)** Test for the following validations:
   -- File Type: .pdf
   -- File Size: 1MB
-- Show a list of past uploaded files with links.
+- **(ok)** Show a list of past uploaded files with links.
 
 ## Backend
 
@@ -27,7 +27,7 @@ Create RESTful APIs, use Spring Boot (MVC Architecture) for bean initialization 
 - **(ok)** Map the name of the file with Name+Hash and store it in the database.
 - **(ok)** Use Hibernate (ORM) or Spring data.
 - **(ok)** Use JAVA 8 (or higher) features like Stream, Lambda Expressions, Concurrency API, etc.
-- Create a 2nd API that sends a JSON containing a list of past uploaded file links
+- **(ok)** Create a 2nd API that sends a JSON containing a list of past uploaded file links
 
 ### Example app
 
