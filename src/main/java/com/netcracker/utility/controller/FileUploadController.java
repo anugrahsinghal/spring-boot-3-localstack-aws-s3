@@ -18,8 +18,7 @@ public class FileUploadController {
     @PostMapping("/upload")
     public String uploadFile(@RequestParam("file") MultipartFile file, RedirectAttributes redirectAttributes) {
         if (!MediaType.APPLICATION_PDF.toString().equals(file.getContentType())) {
-            redirectAttributes.addFlashAttribute("msg",
-                    "Only PDF files accepted!".formatted(file.getOriginalFilename()));
+            redirectAttributes.addFlashAttribute("msg", "Only PDF files accepted!");
             return "redirect:/";
         }
 
