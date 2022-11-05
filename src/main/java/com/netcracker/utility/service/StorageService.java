@@ -7,8 +7,6 @@ public interface StorageService {
 
     Object upload(MultipartFile file);
 
-    Object download(Object someId);
-
     UploadedLinks getUploadedFileLinks();
 
 }

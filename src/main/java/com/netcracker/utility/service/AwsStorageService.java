@@ -4,7 +4,6 @@ import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.model.DeleteObjectRequest;
 import com.amazonaws.services.s3.model.ObjectMetadata;
 import com.amazonaws.services.s3.model.PutObjectResult;
-import com.amazonaws.services.s3.model.S3Object;
 import com.netcracker.utility.config.AwsConfig;
 import com.netcracker.utility.domain.FileInfo;
 import com.netcracker.utility.domain.FileMapping;
@@ -93,18 +92,6 @@ public class AwsStorageService implements StorageService {
         objectMetadata.getUserMetadata().put("MimeType", MediaType.APPLICATION_PDF_VALUE.toLowerCase());
 
         return objectMetadata;
-    }
-
-    @Override
-    public Object download(Object someId) {
-        S3Object s3Object = amazonS3.getObject(awsConfig.getBucketName(), (String) someId);
-        String filename = someId + "." + "pdf";
-        Long contentLength = s3Object.getObjectMetadata().getContentLength();
-
-
-        //        return DownloadedResource.builder().id(id).fileName(filename).contentLength(contentLength).inputStream(s3Object.getObjectContent())
-        //                .build();
-        return null;
     }
 
     @Override
