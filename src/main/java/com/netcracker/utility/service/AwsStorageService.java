@@ -19,6 +19,7 @@ public class AwsStorageService implements StorageService {
 
     private final AwsConfig awsConfig;
     private final AmazonS3 amazonS3;
+    private final HashGenerator hashGenerator;
 
 
     @PostConstruct
@@ -32,8 +33,9 @@ public class AwsStorageService implements StorageService {
     @SneakyThrows
     public Object upload(MultipartFile file) {
 
+        //noinspection UnnecessaryLocalVariable
         PutObjectResult putObjectResult = amazonS3.putObject(awsConfig.getBucketName(),
-                "some-uniq-key",
+                "%s--%s".formatted(file.getName(), hashGenerator.getNonRepeatableHash().value()),
                 file.getInputStream(),
                 objectMetadata(file)
         );
