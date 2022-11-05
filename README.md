@@ -15,18 +15,18 @@ Create RESTful APIs, use Spring Boot (MVC Architecture) for bean initialization 
 
 ## Backend
 
-- Create an API Utility that intakes the given file and uploads it to any cloud storage. Example S3 in AWS.
-- Rename the PDF file to the given name a and add a 7-digit Hash.
-- The Hash must never repeat
-- Mime Type: content/pdf
+- Create an API Utility that intakes the given file and uploads it to any cloud storage. Example S3 in AWS. (ok)
+- Rename the PDF file to the given name a and add a 7-digit Hash. (ok half done, add db impl)
+- The Hash must never repeat (ok half done, add db impl)
+- Mime Type: content/pdf (ok)
 - Make sure that the browser does not download the PDF file but only shows it, unlike the link it in the guide.
 
 - Test for the following validations:
   -- File Type: .pdf
   -- File Size: 1MB
-- Map the name of the file with Name+Hash and store it in the database.
-- Use Hibernate (ORM) or Spring data.
-- Use JAVA 8 (or higher) features like Stream, Lambda Expressions, Concurrency API, etc.
+- Map the name of the file with Name+Hash and store it in the database. (ok)
+- Use Hibernate (ORM) or Spring data. (ok)
+- Use JAVA 8 (or higher) features like Stream, Lambda Expressions, Concurrency API, etc. (ok)
 - Create a 2nd API that sends a JSON containing a list of past uploaded file links
 ### Example app
 
