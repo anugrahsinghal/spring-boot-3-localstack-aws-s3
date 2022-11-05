@@ -10,7 +10,8 @@
         <table>
             <tr>
                 <td>File to upload:</td>
-                <td><input id="file" type="file" name="file" onchange="validateFileSizeAndEnableUpload()" accept=".pdf"/></td>
+                <td><input id="file" type="file" name="file" onchange="validateFileSizeAndEnableUpload()"
+                           accept=".pdf"/></td>
             </tr>
             <tr>
                 <td></td>
@@ -21,8 +22,6 @@
 </div>
 
 <div>
-    <!--    <ul>-->
-    <!--        <li th:each="fileWithLinks : ${uploadedLinks.getFileWithLinks()}">-->
     <table th:border="1px">
         <thead>
         <tr>
@@ -38,7 +37,8 @@
             <td><span th:text="${fileWithLinks.fileName()}"> Name </span></td>
             <td><span th:text="${fileWithLinks.fileLink()}"> Link </span></td>
             <td>
-                <embed th:src="${fileWithLinks.fileLink()}" width="600" height="500" alt="pdf" pluginspage="http://www.adobe.com/products/acrobat/readstep2.html">
+                <embed th:src="${fileWithLinks.fileLink()}" width="600" height="500" alt="pdf"
+                       pluginspage="http://www.adobe.com/products/acrobat/readstep2.html">
             </td>
         </tr>
         </tbody>
@@ -48,18 +48,20 @@
 <script>
     validateFileSizeAndEnableUpload = () => {
         const fileElement = document.getElementById('file');
-        // Check if any file is selected.
         const ONE_MEGABYTE = 1024;
+        // check file selected
         if (fileElement.files.length > 0) {
             const fileSize = fileElement.files.item(0).size;
             const sizeInMb = Math.round((fileSize / ONE_MEGABYTE));
             console.log(sizeInMb)
-            // The size of the file.
-            if (sizeInMb >= ONE_MEGABYTE) {
+            // The size of the file should be <= 1MB
+            if (sizeInMb < ONE_MEGABYTE) {
+                if (document.getElementById('upload-button').disabled === true) {
+                    document.getElementById('upload-button').disabled = false;
+                }
+            } else {
                 document.getElementById('upload-button').disabled = true;
                 alert("File too Big, please select a file less than 1MB");
-            } else {
-                document.getElementById('upload-button').disabled = false;
             }
         }
     }
