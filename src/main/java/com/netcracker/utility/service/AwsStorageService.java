@@ -96,7 +96,7 @@ public class AwsStorageService implements StorageService {
 
     @Override
     public UploadedLinks getUploadedFileLinks() {
-        final List<FileMapping> allFileMappings = fileMappingRepository.findAll();
+        final var allFileMappings = fileMappingRepository.findAll();
 
         final var fileUrlFutures =
                 allFileMappings.stream()
@@ -112,11 +112,10 @@ public class AwsStorageService implements StorageService {
             log.error("Could not fetch url for '{}' files", futureByStatus.get(FAILED_STATUS).size());
         }
 
-        final List<FileWithLink> fileWithLinkList =
-                futureByStatus.get(!FAILED_STATUS).stream()
-                        .map(CompletableFuture::join)
-                        .map(FileWithLink.class::cast)
-                        .collect(Collectors.toList());
+        final var fileWithLinkList = Arrays.stream(fileUrlFutures)
+                                             .map(CompletableFuture::join)
+                                             .map(FileWithLink.class::cast)
+                                             .collect(Collectors.toList());
 
         return new UploadedLinks(fileWithLinkList);
     }
