@@ -54,7 +54,7 @@ public class AwsStorageService implements StorageService {
 
         FileInfo fileInfo = new FileInfo(
                 file.getOriginalFilename(),
-                "%s--%s".formatted(file.getName(), hashGenerator.getNonRepeatableHash().value())
+                "%s--%s".formatted(file.getOriginalFilename(), hashGenerator.getNonRepeatableHash().value())
         );
 
         boolean doesObjectExist = amazonS3.doesObjectExist(awsConfig.getBucketName(), fileInfo.getStorageKey());
