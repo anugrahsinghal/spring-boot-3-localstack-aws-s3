@@ -19,9 +19,9 @@ Create RESTful APIs, use Spring Boot (MVC Architecture) for bean initialization 
 - **(ok half done, add db impl)** Rename the PDF file to the given name a and add a 7-digit Hash.
 - **(ok half done, add db impl)** The Hash must never repeat
 - **(ok)** Mime Type: content/pdf
-- Make sure that the browser does not download the PDF file but only shows it, unlike the link it in the guide.
+- **(ok)** Make sure that the browser does not download the PDF file but only shows it, unlike the link it in the guide.
 
-- Test for the following validations:
+- - **(ok)** Test for the following validations:
     - File Type: .pdf
     - File Size: 1MB
 - **(ok)** Map the name of the file with Name+Hash and store it in the database.
