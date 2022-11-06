@@ -1,5 +1,4 @@
 # syntax=docker/dockerfile:1
-#FROM maven:3-jdk-17 as builder
 FROM eclipse-temurin:17
 
 
