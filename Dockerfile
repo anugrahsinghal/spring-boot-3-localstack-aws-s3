@@ -12,8 +12,8 @@ COPY src src/
 COPY package.json package.json
 COPY webpack.config.js webpack.config.js
 
-# RUN ./mvnw install
+RUN ./mvnw install
 
 EXPOSE 8080
 
-ENTRYPOINT ["./mvnw","spring-boot:run"]
+ENTRYPOINT ["java","-jar","target/netcracker.jar"]
