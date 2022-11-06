@@ -1,6 +1,6 @@
 # Requirements
 
-# How to run locally
+# How to run with docker
 - 
 ```sh
 docker-compose up
@@ -8,3 +8,8 @@ docker-compose up
 # this can take a pretty long time depending on internnet speed
 ```
 - then goto localhost:8080
+
+# How to run locally
+- requires java 17, docker-compose
+1. docker-compose up localstack
+2. ./mvnw spring-boot:run
