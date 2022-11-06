@@ -1,6 +1,7 @@
 import {UploadForm} from "./uploadForm";
 import {FileWithLinksList, PdfRender} from "./fileWithLinksList";
 import axios from 'axios';
+import process from "webpack-cli/bin/.eslintrc";
 
 const React = require('react');
 const ReactDOM = require('react-dom');
@@ -15,7 +16,7 @@ class App extends React.Component {
 
     componentDidMount() {
         console.log("component mounted");
-        const url = 'http://localhost:8080/links';
+        const url = process.env.REACT_APP_BACKEND + '/links';
         const config = {};
         axios.get(url, config).then((response) => {
             console.log(response.data);

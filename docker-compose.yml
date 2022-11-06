@@ -15,6 +15,7 @@ services:
     environment:
       - SPRING_JPA_HIBERNATE_DDL_AUTO=update
       - AWS_ENDPOINT=localhost.localstack.cloud:4566
+      - REACT_APP_BACKEND=http://localhost:8080
       # - DEBUG=true
   localstack:
     container_name: localstack

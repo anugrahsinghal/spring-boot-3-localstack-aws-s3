@@ -1,5 +1,6 @@
 import React from "react";
 import axios from "axios";
+import process from "webpack-cli/bin/.eslintrc";
 
 export class UploadForm extends React.Component {
     constructor(props) {
@@ -31,7 +32,7 @@ export class UploadForm extends React.Component {
 
     handleSubmit(event) {
         event.preventDefault()
-        const url = 'http://localhost:8080/upload';
+        const url = process.env.REACT_APP_BACKEND + '/upload';
         const formData = new FormData();
         formData.append('file', this.state.file);
         formData.append('fileName', this.state.file.name);
