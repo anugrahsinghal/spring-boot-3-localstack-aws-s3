@@ -16,7 +16,7 @@ class App extends React.Component {
 
     componentDidMount() {
         console.log("component mounted");
-        const url = process.env.REACT_APP_BACKEND + '/links';
+        const url = 'https://localstack-e61o.onrender.com/links';
         const config = {};
         axios.get(url, config).then((response) => {
             console.log(response.data);

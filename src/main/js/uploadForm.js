@@ -32,7 +32,7 @@ export class UploadForm extends React.Component {
 
     handleSubmit(event) {
         event.preventDefault()
-        const url = process.env.REACT_APP_BACKEND + '/upload';
+        const url = 'https://localstack-e61o.onrender.com/upload';
         const formData = new FormData();
         formData.append('file', this.state.file);
         formData.append('fileName', this.state.file.name);
