@@ -9,6 +9,8 @@ COPY pom.xml pom.xml
 RUN ./mvnw verify --fail-never
 
 COPY src src/
+COPY package.json package.json
+COPY webpack.config.json webpack.config.json
 
 # RUN ./mvnw install
 
