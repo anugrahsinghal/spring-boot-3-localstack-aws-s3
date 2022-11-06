@@ -10,7 +10,7 @@ RUN ./mvnw verify --fail-never
 
 COPY src src/
 COPY package.json package.json
-COPY webpack.config.json webpack.config.json
+COPY webpack.config.js webpack.config.js
 
 # RUN ./mvnw install
 
