@@ -13,3 +13,7 @@ docker-compose up
 - requires java 17, docker-compose
 1. docker-compose up localstack
 2. ./mvnw spring-boot:run
+
+
+# deployment details
+https://notepad.pw/netcracker-deploy
