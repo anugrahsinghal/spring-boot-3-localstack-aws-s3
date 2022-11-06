@@ -4,32 +4,23 @@ import com.netcracker.utility.dto.UploadedLinks;
 import com.netcracker.utility.service.StorageService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-@Controller
+@RestController
 @RequiredArgsConstructor
 @Slf4j
-public class FileListingController {
+public class FileListingControllerV2 {
 
     private final StorageService storageService;
 
-    @GetMapping("/old")
-    public String uploadedFiles(Model model) {
+    @GetMapping("/links")
+    public UploadedLinks uploadedFiles() {
         final UploadedLinks uploadedFileLinks = storageService.getUploadedFileLinks();
 
         log.info("uploadedFileLinks = {}", uploadedFileLinks);
 
-        model.addAttribute("uploadedLinks", uploadedFileLinks);
-
-        return "index";
+        return uploadedFileLinks;
     }
-
-    @GetMapping(value = "/") 
-	public String index() {
-		
-        return "index";
-	}
 
 }
