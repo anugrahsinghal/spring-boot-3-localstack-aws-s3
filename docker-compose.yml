@@ -3,8 +3,21 @@
 version: "3.8"
 
 services:
+  app:
+    image: 'aws-project:10'
+    build:
+      context: .
+    container_name: app
+    ports:
+      - "8080:8080"    
+    depends_on:
+      - localstack
+    environment:
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+      - AWS_ENDPOINT=localhost.localstack.cloud:4566
+      # - DEBUG=true
   localstack:
-    container_name: "${LOCALSTACK_DOCKER_NAME-localstack_main}"
+    container_name: localstack
     image: localstack/localstack
     ports:
       - "127.0.0.1:4566:4566"            # LocalStack Gateway
@@ -13,6 +26,7 @@ services:
       # - "127.0.0.1:53:53/udp"            # DNS config (only required for Pro)
       # - "127.0.0.1:443:443"              # LocalStack HTTPS Gateway (only required for Pro)
     environment:
+      - SERVICES=s3:81
       - DEBUG=${DEBUG-}
       - PERSISTENCE=${PERSISTENCE-}
       - LAMBDA_EXECUTOR=${LAMBDA_EXECUTOR-}
@@ -21,3 +35,16 @@ services:
     volumes:
       - "${LOCALSTACK_VOLUME_DIR:-./volume}:/var/lib/localstack"
       - "/var/run/docker.sock:/var/run/docker.sock"
+    networks:
+      default:
+        aliases:
+          - localhost.localstack.cloud   # set this network aliases to expose localstack to other containers
+    healthcheck:
+      test:
+        - CMD
+        - bash
+        - -c
+        - awslocal s3 ls
+      interval: 5s
+      timeout: 10s
+      start_period: 10s

@@ -6,9 +6,16 @@ FROM eclipse-temurin:17
 COPY .mvn .mvn/
 COPY mvnw mvnw
 COPY pom.xml pom.xml
+
+RUN ./mvnw verify --fail-never
+
 COPY src src/
 
-RUN ./mvnw verify
+RUN ./mvnw install
+
+EXPOSE 8080
+
+ENTRYPOINT ["java","-jar","target/netcracker.jar"]
 
 #ENV HOME=/usr/app
 #
