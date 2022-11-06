@@ -74,9 +74,8 @@ public class AwsStorageService implements StorageService {
         try {
             fileMappingRepository.saveAndFlush(new FileMapping(fileInfo));
         } catch (Exception e) {
-            throw new RuntimeException("Object Could not be saved", e);
-        } finally {
             amazonS3.deleteObject(new DeleteObjectRequest(awsConfig.getBucketName(), fileInfo.getStorageKey()));
+            throw new RuntimeException("Object Could not be saved", e);
         }
 
         return putObjectResult;
