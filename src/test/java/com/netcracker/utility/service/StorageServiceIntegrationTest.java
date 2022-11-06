@@ -13,7 +13,6 @@ import com.netcracker.utility.config.AwsConfig;
 import com.netcracker.utility.dto.FileWithLink;
 import com.netcracker.utility.dto.UploadedLinks;
 import com.netcracker.utility.repository.FileMappingRepository;
-import lombok.extern.slf4j.Slf4j;
 import org.assertj.core.api.Condition;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -34,10 +33,7 @@ import org.testcontainers.utility.DockerImageName;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.testcontainers.containers.localstack.LocalStackContainer.Service.S3;
 
-@Slf4j
-// @SpringBootTest(properties = "debug=true")
-@SpringBootTest//({"spring.main.allow-bean-definition-overriding=true", "debug=true"})
-//@Import(StorageServiceIntegrationTest.MockAmazonS3.class)
+@SpringBootTest
 @Testcontainers(disabledWithoutDocker = true)
 class StorageServiceIntegrationTest {
 
