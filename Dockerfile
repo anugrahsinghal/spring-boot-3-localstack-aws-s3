@@ -10,8 +10,8 @@ RUN ./mvnw verify --fail-never
 
 COPY src src/
 
-RUN ./mvnw install
+# RUN ./mvnw install
 
 EXPOSE 8080
 
-ENTRYPOINT ["java","-jar","target/netcracker.jar"]
+ENTRYPOINT ["./mvnw","spring-boot:run"]
